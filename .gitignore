@@ -1,0 +1,16 @@
+# app
+/app/vendor
+/app/.env
+/app/*.lst
+/app/phpstan.neon
+
+
+docker/.env
+docker/postgres/data
+
+# ide
+.idea
+.vscode
+
+
+
