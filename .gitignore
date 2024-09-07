@@ -3,7 +3,7 @@
 /app/.env
 /app/*.lst
 /app/phpstan.neon
-
+/app/bundles
 
 docker/.env
 docker/postgres/data
@@ -11,6 +11,3 @@ docker/postgres/data
 # ide
 .idea
 .vscode
-
-
-

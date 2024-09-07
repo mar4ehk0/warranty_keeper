@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9fb1ca4e31fe0b5e08a5d8674f6a53dd",
+    "content-hash": "8c7195645d6e3d794e1804072f34f6bd",
     "packages": [
         {
             "name": "brick/math",
@@ -1368,6 +1368,42 @@
                 "source": "https://github.com/doctrine/sql-formatter/tree/1.4.0"
             },
             "time": "2024-05-08T08:12:09+00:00"
+        },
+        {
+            "name": "mar4ehk0/ocr-bundle",
+            "version": "0.1.0",
+            "dist": {
+                "type": "path",
+                "url": "./bundles/OCRBundle",
+                "reference": "db8f04a1331f287ec4d832b9188eac2e418b5ee2"
+            },
+            "require": {
+                "php": "^8.2"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "symfony": {
+                    "allow-contrib": false,
+                    "require": "7.1.*"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "mar4ehk0\\OCRBundle\\": "src/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "./vendor/bin/simple-phpunit"
+                ]
+            },
+            "license": [
+                "proprietary"
+            ],
+            "description": "Bundle for text recognition",
+            "transport-options": {
+                "relative": true
+            }
         },
         {
             "name": "monolog/monolog",

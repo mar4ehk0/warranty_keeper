@@ -38,6 +38,9 @@
             ".php-cs-fixer.dist.php"
         ]
     },
+    "mar4ehk0/ocr-bundle": {
+        "version": "0.1.0"
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
