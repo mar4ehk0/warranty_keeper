@@ -4,13 +4,11 @@ namespace App\Application\Warranty\Service;
 
 use App\Domain\Warranty\Entity\Receipt;
 use DateTimeImmutable;
-use RuntimeException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Uid\Factory\UlidFactory;
 
 class ReceiptUpload
 {
-
     public function __construct(
         private readonly string $fileStorage,
         private UlidFactory $ulidFactory

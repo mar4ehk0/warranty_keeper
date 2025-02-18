@@ -2,7 +2,6 @@
 
 namespace App\Infrastructure\Doctrine\Repository;
 
-use App\Domain\Warranty\Entity\Receipt;
 use App\Domain\Warranty\Entity\Warranty;
 use App\Domain\Warranty\Repository\WarrantyRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
@@ -16,6 +15,7 @@ class WarrantyRepository implements WarrantyRepositoryInterface
     {
         $this->repo = $this->entityManager->getRepository(Warranty::class);
     }
+
     public function add(Warranty $warranty): void
     {
         $this->entityManager->persist($warranty);

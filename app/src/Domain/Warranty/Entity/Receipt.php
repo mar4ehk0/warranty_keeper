@@ -3,12 +3,11 @@
 namespace App\Domain\Warranty\Entity;
 
 use App\Domain\BaseEntity;
-use App\Domain\Warranty\Repository\ReceiptRepositoryInterface;
 use DateTimeImmutable;
+use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Table;
 use Symfony\Bridge\Doctrine\Types\UlidType;
-use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Ulid;
 
 #[Entity()]
@@ -29,8 +28,7 @@ class Receipt extends BaseEntity
         Ulid $id,
         string $path,
         DateTimeImmutable $createdAt,
-    )
-    {
+    ) {
         parent::__construct($createdAt);
         $this->id = $id;
         $this->name = $id->toString();

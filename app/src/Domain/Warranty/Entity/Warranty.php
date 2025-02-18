@@ -3,7 +3,6 @@
 namespace App\Domain\Warranty\Entity;
 
 use App\Domain\BaseEntity;
-use App\Domain\Warranty\Repository\WarrantyRepositoryInterface;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Entity;
@@ -32,7 +31,7 @@ class Warranty extends BaseEntity
     #[JoinColumn(name: 'receipt_id', referencedColumnName: 'id')]
     private Receipt $receipt;
     #[ORM\Column(type: 'text')]
-    private string $recognisedDescription = "";
+    private string $recognisedDescription = '';
 
     public function __construct(
         Ulid $id,
@@ -41,8 +40,7 @@ class Warranty extends BaseEntity
         Receipt $receipt,
         DateTimeImmutable $warrantyUntil,
         DateTimeImmutable $createdAt,
-    )
-    {
+    ) {
         parent::__construct($createdAt);
         $this->id = $id;
         $this->name = $name;

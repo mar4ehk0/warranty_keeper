@@ -12,12 +12,12 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class WarrantyController extends BaseController
 {
-
     public function __construct(
         private readonly WarrantyKeepUseCase $useCase,
         private readonly ValidatorInterface $validator,
     ) {
     }
+
     #[Route('/upload', name: 'upload', methods: ['GET', 'POST'])]
     public function keep(Request $request): Response
     {
@@ -42,12 +42,11 @@ class WarrantyController extends BaseController
             $this->useCase->run($dto);
             // редирект
 
-
-//            if ($uploadedReceipt) {
-//                $dto = UploadFileEntryDto::createFromUploadedFile($uploadedReceipt);
-//                $this->handler->handle($dto);
-//                // тут редирект на создание warrantly в аргументах должен быть recongnnizedtext
-//            }
+            //            if ($uploadedReceipt) {
+            //                $dto = UploadFileEntryDto::createFromUploadedFile($uploadedReceipt);
+            //                $this->handler->handle($dto);
+            //                // тут редирект на создание warrantly в аргументах должен быть recongnnizedtext
+            //            }
         }
 
         return $this->render('warranty/upload.html.twig', [

@@ -13,7 +13,6 @@ use Symfony\Component\Uid\Factory\UlidFactory;
 
 class WarrantyKeepUseCase
 {
-
     public function __construct(
         private Flusher $flusher,
         private UlidFactory $ulidFactory,
