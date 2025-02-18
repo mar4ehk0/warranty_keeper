@@ -11,7 +11,7 @@ use Symfony\Bridge\Doctrine\Types\UlidType;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Uid\Ulid;
 
-#[Entity(repositoryClass: ReceiptRepositoryInterface::class)]
+#[Entity()]
 #[Table(name: 'Receipt')]
 class Receipt extends BaseEntity
 {
@@ -19,7 +19,7 @@ class Receipt extends BaseEntity
     #[ORM\Column(type: UlidType::NAME, unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'doctrine.ulid_generator')]
-    private string $id;
+    private Ulid $id;
     #[ORM\Column(type: 'string')]
     private string $name;
     #[ORM\Column(type: 'string')]
@@ -27,15 +27,18 @@ class Receipt extends BaseEntity
 
     public function __construct(
         Ulid $id,
-        string $name,
         string $path,
         DateTimeImmutable $createdAt,
     )
     {
         parent::__construct($createdAt);
         $this->id = $id;
-        $this->name = $name;
+        $this->name = $id->toString();
         $this->path = $path;
-        $this->createdAt = $createdAt;
+    }
+
+    public function getId(): string
+    {
+        return $this->id->toString();
     }
 }

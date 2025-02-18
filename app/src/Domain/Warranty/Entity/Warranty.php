@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping\Table;
 use Symfony\Bridge\Doctrine\Types\UlidType;
 use Symfony\Component\Uid\Ulid;
 
-#[Entity(repositoryClass: WarrantyRepositoryInterface::class)]
+#[Entity()]
 #[Table(name: 'Warranty')]
 class Warranty extends BaseEntity
 {
@@ -21,22 +21,23 @@ class Warranty extends BaseEntity
     #[ORM\Column(type: UlidType::NAME, unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'doctrine.ulid_generator')]
-    private string $id;
+    private Ulid $id;
     #[ORM\Column(type: 'string')]
     private string $name;
     #[ORM\Column(type: 'text')]
-    private string $description;
+    private string $humanDescription;
     #[ORM\Column(type: 'datetime_immutable')]
-    private string $warrantyUntil;
-
+    private DateTimeImmutable $warrantyUntil;
     #[OneToOne(targetEntity: Receipt::class)]
     #[JoinColumn(name: 'receipt_id', referencedColumnName: 'id')]
     private Receipt $receipt;
+    #[ORM\Column(type: 'text')]
+    private string $recognisedDescription = "";
 
     public function __construct(
         Ulid $id,
         string $name,
-        string $description,
+        string $humanDescription,
         Receipt $receipt,
         DateTimeImmutable $warrantyUntil,
         DateTimeImmutable $createdAt,
@@ -45,8 +46,13 @@ class Warranty extends BaseEntity
         parent::__construct($createdAt);
         $this->id = $id;
         $this->name = $name;
-        $this->description = $description;
+        $this->humanDescription = $humanDescription;
         $this->warrantyUntil = $warrantyUntil;
         $this->receipt = $receipt;
+    }
+
+    public function getId(): string
+    {
+        return $this->id->toString();
     }
 }

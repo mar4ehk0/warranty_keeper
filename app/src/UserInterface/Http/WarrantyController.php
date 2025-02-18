@@ -27,8 +27,10 @@ class WarrantyController extends BaseController
         if ($form->isSubmitted() && $form->isValid()) {
             $name = $form->get('name')->getData();
             $receipt = $form->get('receipt')->getData();
+            $humanDescription = $form->get('human_description')->getData();
+            $warrantyUntil = $form->get('warranty_until')->getData();
 
-            $dto = new WarrantyKeepUseCaseEntryDto($name, $receipt);
+            $dto = new WarrantyKeepUseCaseEntryDto($name, $humanDescription, $receipt, $warrantyUntil);
 
             $errors = $this->validator->validate($dto);
             if (count($errors) > 0) {
