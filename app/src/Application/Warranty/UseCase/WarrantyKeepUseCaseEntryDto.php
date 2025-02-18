@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\UseCase\Warranty;
+namespace App\Application\Warranty\UseCase;
 
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;

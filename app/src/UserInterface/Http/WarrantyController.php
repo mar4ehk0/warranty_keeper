@@ -2,8 +2,8 @@
 
 namespace App\UserInterface\Http;
 
-use App\Application\UseCase\Warranty\WarrantyKeepUseCase;
-use App\Application\UseCase\Warranty\WarrantyKeepUseCaseEntryDto;
+use App\Application\Warranty\UseCase\WarrantyKeepUseCase;
+use App\Application\Warranty\UseCase\WarrantyKeepUseCaseEntryDto;
 use App\UserInterface\Form\WarrantyForm;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
