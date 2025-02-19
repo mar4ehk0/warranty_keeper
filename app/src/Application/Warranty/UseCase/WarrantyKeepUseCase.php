@@ -27,6 +27,9 @@ class WarrantyKeepUseCase
     ) {
     }
 
+    /**
+     * @throws RuntimeException
+     */
     public function run(WarrantyKeepUseCaseEntryDto $dto)
     {
         try {
