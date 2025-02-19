@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\Warranty\Service;
+namespace App\Application\Warranty\Service\ReceiptUploader;
 
 final readonly class ReceiptUploaderDTO
 {

@@ -4,10 +4,10 @@ namespace App\Application\Warranty\UseCase;
 
 use App\Application\Common\Service\FlusherInterface;
 use App\Application\Common\Service\GeneratorIdInterface;
-use App\Application\OCR\RecognizerInterface;
-use App\Application\Warranty\Service\ReceiptUploaderDTO;
-use App\Application\Warranty\Service\ReceiptUploaderException;
-use App\Application\Warranty\Service\ReceiptUploaderInterface;
+use App\Application\OCR\Service\Recognize\RecognizerInterface;
+use App\Application\Warranty\Service\ReceiptUploader\ReceiptUploaderDTO;
+use App\Application\Warranty\Service\ReceiptUploader\ReceiptUploaderException;
+use App\Application\Warranty\Service\ReceiptUploader\ReceiptUploaderInterface;
 use App\Domain\Warranty\Entity\Receipt;
 use App\Domain\Warranty\Entity\Warranty;
 use App\Domain\Warranty\Repository\ReceiptRepositoryInterface;
@@ -46,7 +46,7 @@ class WarrantyKeepUseCase
         $this->receiptRepository->add($receipt);
         $this->warrantyRepository->add($warranty);
 
-        $recognizedDescr = $this->recognizer->recognize($receipt);
+        $recognizedDescr = $this->recognizer->recognize($receipt->getPath());
 
         $warranty->setRecognisedDescription($recognizedDescr);
 

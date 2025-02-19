@@ -2,9 +2,9 @@
 
 namespace App\Infrastructure\Warranty\Service;
 
-use App\Application\Warranty\Service\ReceiptUploaderDTO;
-use App\Application\Warranty\Service\ReceiptUploaderException;
-use App\Application\Warranty\Service\ReceiptUploaderInterface;
+use App\Application\Warranty\Service\ReceiptUploader\ReceiptUploaderDTO;
+use App\Application\Warranty\Service\ReceiptUploader\ReceiptUploaderException;
+use App\Application\Warranty\Service\ReceiptUploader\ReceiptUploaderInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Uid\Factory\UlidFactory;
 
