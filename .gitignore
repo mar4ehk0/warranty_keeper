@@ -11,3 +11,5 @@ docker/postgres/data
 # ide
 .idea
 .vscode
+
+app/.deptrac.cache
