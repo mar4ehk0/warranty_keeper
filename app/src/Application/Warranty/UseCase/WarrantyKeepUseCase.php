@@ -4,6 +4,7 @@ namespace App\Application\Warranty\UseCase;
 
 use App\Application\Common\Service\FlusherInterface;
 use App\Application\Common\Service\GeneratorIdInterface;
+use App\Application\OCR\RecognizerInterface;
 use App\Application\Warranty\Service\ReceiptUploaderDTO;
 use App\Application\Warranty\Service\ReceiptUploaderException;
 use App\Application\Warranty\Service\ReceiptUploaderInterface;
@@ -23,6 +24,7 @@ class WarrantyKeepUseCase
         private ReceiptUploaderInterface $receiptUpload,
         private ReceiptRepositoryInterface $receiptRepository,
         private WarrantyRepositoryInterface $warrantyRepository,
+        private RecognizerInterface $recognizer,
         private LoggerInterface $logger,
     ) {
     }
@@ -43,6 +45,10 @@ class WarrantyKeepUseCase
 
         $this->receiptRepository->add($receipt);
         $this->warrantyRepository->add($warranty);
+
+        $recognizedDescr = $this->recognizer->recognize($receipt);
+
+        $warranty->setRecognisedDescription($recognizedDescr);
 
         $this->flusher->flush();
     }

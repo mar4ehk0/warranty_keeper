@@ -52,4 +52,9 @@ class Warranty extends BaseEntity
     {
         return $this->id;
     }
+
+    public function setRecognisedDescription(string $recognisedDescription): void
+    {
+        $this->recognisedDescription = $recognisedDescription;
+    }
 }
