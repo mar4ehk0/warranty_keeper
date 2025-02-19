@@ -2,9 +2,10 @@
 
 namespace App\Infrastructure\Doctrine;
 
+use App\Application\Common\Service\FlusherInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
-class Flusher
+class Flusher implements FlusherInterface
 {
     private EntityManagerInterface $entityManager;
 

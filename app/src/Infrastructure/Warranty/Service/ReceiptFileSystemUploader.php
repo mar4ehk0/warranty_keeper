@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Application\Warranty\Service;
+namespace App\Infrastructure\Warranty\Service;
 
-use App\Domain\Warranty\Entity\Receipt;
-use DateTimeImmutable;
+use App\Application\Warranty\Service\ReceiptUploaderDTO;
+use App\Application\Warranty\Service\ReceiptUploaderException;
+use App\Application\Warranty\Service\ReceiptUploaderInterface;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Uid\Factory\UlidFactory;
 
-class ReceiptUpload
+class ReceiptFileSystemUploader implements ReceiptUploaderInterface
 {
     public function __construct(
         private readonly string $fileStorage,
@@ -15,18 +16,20 @@ class ReceiptUpload
     ) {
     }
 
-    public function upload(UploadedFile $file): Receipt
+    /**
+     * @throws ReceiptUploaderException
+     */
+    public function upload(UploadedFile $file): ReceiptUploaderDTO
     {
         $extension = $file->getClientOriginalExtension();
         $id = $this->ulidFactory->create();
         $newFilePath = $this->createFilePath($id->toString(), $extension);
 
         if (!move_uploaded_file($file->getPathname(), $newFilePath)) {
-            throw new ReceiptUploadException($file, $newFilePath);
+            throw new ReceiptUploaderException($file->getClientOriginalName(), $newFilePath);
         }
-        $receipt = new Receipt($id, $newFilePath, new DateTimeImmutable());
 
-        return $receipt;
+        return new ReceiptUploaderDTO($newFilePath, $id->toString());
     }
 
     private function createFilePath(string $newFileName, string $extension): string

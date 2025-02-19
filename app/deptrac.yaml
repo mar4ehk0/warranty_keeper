@@ -1,0 +1,41 @@
+deptrac:
+  paths:
+    - ./src
+
+  layers:
+    - name: Domain
+      collectors:
+        - type: directory
+          value: src/Domain/.*
+
+    - name: Application
+      collectors:
+        - type: directory
+          value: src/Application/.*
+
+    - name: Infrastructure
+      collectors:
+        - type: directory
+          value: src/Infrastructure/.*
+
+    - name: UserInterface
+      collectors:
+        - type: directory
+          value: src/UserInterface/.*
+
+  ruleset:
+    Domain:
+    Application:
+      - Domain
+    Infrastructure:
+      - Application
+    UserInterface:
+      - Application
+
+  skip_violations:
+    App\Infrastructure\Doctrine\Repository\ReceiptRepository:
+      - App\Domain\Warranty\Entity\Receipt
+      - App\Domain\Warranty\Repository\ReceiptRepositoryInterface
+    App\Infrastructure\Doctrine\Repository\WarrantyRepository:
+      - App\Domain\Warranty\Entity\Warranty
+      - App\Domain\Warranty\Repository\WarrantyRepositoryInterface

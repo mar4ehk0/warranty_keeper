@@ -10,7 +10,6 @@ use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\ORM\Mapping\OneToOne;
 use Doctrine\ORM\Mapping\Table;
 use Symfony\Bridge\Doctrine\Types\UlidType;
-use Symfony\Component\Uid\Ulid;
 
 #[Entity()]
 #[Table(name: 'Warranty')]
@@ -20,7 +19,7 @@ class Warranty extends BaseEntity
     #[ORM\Column(type: UlidType::NAME, unique: true)]
     #[ORM\GeneratedValue(strategy: 'CUSTOM')]
     #[ORM\CustomIdGenerator(class: 'doctrine.ulid_generator')]
-    private Ulid $id;
+    private string $id;
     #[ORM\Column(type: 'string')]
     private string $name;
     #[ORM\Column(type: 'text')]
@@ -34,7 +33,7 @@ class Warranty extends BaseEntity
     private string $recognisedDescription = '';
 
     public function __construct(
-        Ulid $id,
+        string $id,
         string $name,
         string $humanDescription,
         Receipt $receipt,
@@ -51,6 +50,6 @@ class Warranty extends BaseEntity
 
     public function getId(): string
     {
-        return $this->id->toString();
+        return $this->id;
     }
 }
