@@ -1,6 +1,6 @@
 <?php
 
-namespace App\UserInterface\Form;
+namespace App\UserInterface\Http\Form;
 
 use DateTimeImmutable;
 use Symfony\Component\Form\AbstractType;

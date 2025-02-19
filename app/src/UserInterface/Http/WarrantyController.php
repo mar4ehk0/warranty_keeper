@@ -4,7 +4,7 @@ namespace App\UserInterface\Http;
 
 use App\Application\Warranty\UseCase\WarrantyKeepUseCase;
 use App\Application\Warranty\UseCase\WarrantyKeepUseCaseEntryDto;
-use App\UserInterface\Form\WarrantyForm;
+use App\UserInterface\Http\Form\WarrantyForm;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
